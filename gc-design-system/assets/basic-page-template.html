@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Title - Canada.ca</title>
+
+  <!-- GC Design System Components -->
+  <link rel="stylesheet"
+    href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.47.0/dist/gcds/gcds.css" />
+  <script type="module"
+    src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.47.0/dist/gcds/gcds.esm.js"></script>
+
+  <!-- GC Design System CSS Shortcuts -->
+  <link rel="stylesheet"
+    href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.47.0/dist/gcds/gcds-utility.css" />
+
+  <!-- Tailwind CSS (for gap components not in GCDS) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      prefix: 'tw-',
+      theme: {
+        extend: {
+          colors: {
+            'gc-blue-900': '#26374a',
+            'gc-blue-800': '#2b4380',
+            'gc-blue-700': '#335075',
+            'gc-blue-600': '#1c578a',
+            'gc-blue-500': '#2572b4',
+            'gc-blue-100': '#b2d8f0',
+            'gc-red-700': '#d3080c',
+            'gc-red-100': '#f3e8e8',
+            'gc-green-700': '#1b6c1e',
+            'gc-green-100': '#d8eeca',
+            'gc-yellow-700': '#ee7100',
+            'gc-yellow-100': '#f9f4d4',
+            'gc-gray-50': '#f5f5f5',
+            'gc-gray-100': '#eeeeee',
+            'gc-gray-200': '#cccccc',
+            'gc-gray-600': '#666666',
+            'gc-gray-700': '#555555',
+            'gc-gray-800': '#444444',
+            'gc-gray-900': '#333333',
+            'gc-text': '#333333',
+            'gc-text-secondary': '#555555',
+            'gc-border': '#cccccc',
+          },
+          fontFamily: { 'gc': ['Noto Sans', 'sans-serif'] },
+          borderRadius: { 'gc': '0.25rem' },
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <gcds-header
+    lang-href="/fr"
+    skip-to-href="#main-content"
+    signature-has-link="true">
+    <gcds-search slot="search"></gcds-search>
+    <gcds-breadcrumbs slot="breadcrumb">
+      <gcds-breadcrumbs-item href="https://canada.ca/en">Canada.ca</gcds-breadcrumbs-item>
+      <gcds-breadcrumbs-item href="#">Department</gcds-breadcrumbs-item>
+    </gcds-breadcrumbs>
+  </gcds-header>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main id="main-content">
+
+    <gcds-container size="xl" centered padding="400">
+
+      <gcds-heading tag="h1" margin-bottom="400">Page Title</gcds-heading>
+
+      <gcds-text margin-bottom="400">
+        This is a starter template using the GC Design System. Replace this content
+        with your own. Use GCDS components for standard UI and Tailwind (tw- prefix)
+        for advanced components not available in GCDS.
+      </gcds-text>
+
+      <!-- Example: Grid with cards -->
+      <gcds-grid columns="1fr" columns-tablet="1fr 1fr" columns-desktop="1fr 1fr 1fr" gap="400">
+        <gcds-card
+          card-title="Service One"
+          card-title-tag="h2"
+          href="#"
+          description="Brief description of the first service available.">
+        </gcds-card>
+        <gcds-card
+          card-title="Service Two"
+          card-title-tag="h2"
+          href="#"
+          description="Brief description of the second service available.">
+        </gcds-card>
+        <gcds-card
+          card-title="Service Three"
+          card-title-tag="h2"
+          href="#"
+          description="Brief description of the third service available.">
+        </gcds-card>
+      </gcds-grid>
+
+      <!-- Example: Notice -->
+      <gcds-notice type="info" notice-title="Important information" notice-title-tag="h2">
+        <gcds-text>This notice uses the GCDS Notice component for contextual alerts.</gcds-text>
+      </gcds-notice>
+
+    </gcds-container>
+
+    <gcds-date-modified type="date">2025-10-01</gcds-date-modified>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <gcds-footer
+    display="compact"
+    contextual-heading="Contact us"
+    contextual-links='{"Report a problem": "#", "Ask a question": "#"}'>
+  </gcds-footer>
+
+</body>
+</html>
