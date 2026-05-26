@@ -5,6 +5,29 @@ CSS utility classes built to match GC Design System tokens. Add via:
 <link rel="stylesheet" href="https://cdn.design-system.alpha.canada.ca/@gcds-core/css-shortcuts@1.1.0/dist/gcds-css-shortcuts.min.css" />
 ```
 
+## Install and load styles
+
+### Non-React (HTML/Web Components)
+
+Load both GCDS component styles and CSS shortcuts:
+
+```html
+<link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@1.2.0/dist/gcds/gcds.css" />
+<link rel="stylesheet" href="https://cdn.design-system.alpha.canada.ca/@gcds-core/css-shortcuts@1.1.0/dist/gcds-css-shortcuts.min.css" />
+<script type="module" src="https://cdn.design-system.canada.ca/@gcds-core/components@1.2.0/dist/gcds/gcds.esm.js"></script>
+```
+
+### React
+
+```bash
+npm install @gcds-core/components @gcds-core/components-react @gcds-core/css-shortcuts
+```
+
+```tsx
+import '@gcds-core/components-react/gcds.css';
+import '@gcds-core/css-shortcuts/dist/gcds-css-shortcuts.min.css';
+```
+
 ## Table of Contents
 
 - [Responsive Breakpoints](#responsive-breakpoints)

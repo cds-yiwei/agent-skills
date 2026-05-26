@@ -1,6 +1,6 @@
 ---
 name: gc-design-system
-description: Build professional Government of Canada websites using the GC Design System (GCDS) web components, CSS shortcuts, and design tokens. Use Tailwind CSS for advanced components not available in GCDS (tables, modals, toasts, tabs). Triggers when user mentions Canada.ca, Government of Canada website, GC Design System, GCDS, federal government web page, Canada.ca template, or asks to build a bilingual government service page.
+description: Build professional Government of Canada websites using the latest GC Design System (GCDS) for both non-React and React projects, including component styles, CSS shortcuts, and design tokens. Use Tailwind CSS for advanced components not available in GCDS (tables, modals, toasts, tabs). Triggers when user mentions Canada.ca, Government of Canada website, GC Design System, GCDS, federal government web page, Canada.ca template, or asks to build a bilingual government service page.
 ---
 
 # GC Design System Website Builder
@@ -9,20 +9,24 @@ Build accessible, bilingual Government of Canada websites using GCDS web compone
 
 ## Quick Start
 
-1. Copy the starter template from `assets/basic-page-template.html`
-2. Modify header, main content, and footer sections
-3. Use GCDS components for standard UI (see [references/components.md](references/components.md))
+1. Pick implementation mode:
+   - **Non-React:** HTML/Web Components (starter in `assets/basic-page-template.html`)
+   - **React:** `@gcds-core/components-react` wrappers
+2. Add required GCDS component styles and CSS shortcuts
+3. Build standard UI with GCDS components (see [references/components.md](references/components.md))
 4. Use Tailwind CSS (tw- prefix) for advanced components (see [references/tailwind-gap-components.md](references/tailwind-gap-components.md))
 
-## CDN Setup (HTML head)
+## Non-React Setup (HTML / Web Components)
+
+### CDN setup (`<head>`)
 
 ```html
 <link rel="stylesheet"
-  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.47.0/dist/gcds/gcds.css" />
+  href="https://cdn.design-system.canada.ca/@gcds-core/components@1.2.0/dist/gcds/gcds.css" />
 <script type="module"
-  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.47.0/dist/gcds/gcds.esm.js"></script>
+  src="https://cdn.design-system.canada.ca/@gcds-core/components@1.2.0/dist/gcds/gcds.esm.js"></script>
 <link rel="stylesheet"
-  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.47.0/dist/gcds/gcds-utility.css" />
+  href="https://cdn.design-system.alpha.canada.ca/@gcds-core/css-shortcuts@1.1.0/dist/gcds-css-shortcuts.min.css" />
 ```
 
 For Tailwind gap components, also add:
@@ -31,15 +35,40 @@ For Tailwind gap components, also add:
 ```
 Configure Tailwind with `tw-` prefix to avoid GCDS class conflicts. See [references/tailwind-gap-components.md](references/tailwind-gap-components.md) for the full config block.
 
-## npm Setup (alternative)
+### npm setup
 
 ```bash
-npm install @cdssnc/gcds-components
-# or new packages:
 npm install @gcds-core/components @gcds-core/css-shortcuts
 ```
 
-Framework wrappers: `@cdssnc/gcds-components-react`, `@cdssnc/gcds-components-angular`, `@cdssnc/gcds-components-vue`
+Then load styles/scripts:
+```html
+<link rel="stylesheet" href="/node_modules/@gcds-core/components/dist/gcds/gcds.css" />
+<script type="module" src="/node_modules/@gcds-core/components/dist/gcds/gcds.esm.js"></script>
+<link rel="stylesheet" href="/node_modules/@gcds-core/css-shortcuts/dist/gcds-css-shortcuts.min.css" />
+```
+
+## React Setup
+
+Install:
+```bash
+npm install @gcds-core/components @gcds-core/components-react @gcds-core/css-shortcuts
+```
+
+Import styles and use React wrappers:
+```tsx
+import '@gcds-core/components-react/gcds.css';
+import '@gcds-core/css-shortcuts/dist/gcds-css-shortcuts.min.css';
+import { GcdsButton, GcdsContainer } from '@gcds-core/components-react';
+
+export function Example() {
+  return (
+    <GcdsContainer centered size="lg">
+      <GcdsButton type="button" buttonRole="primary">Continue</GcdsButton>
+    </GcdsContainer>
+  );
+}
+```
 
 ## Page Structure (mandatory)
 
@@ -78,7 +107,7 @@ Header, Footer, Breadcrumbs, Buttons, Forms (Input, Textarea, Select, Checkboxes
 
 1. **Accessibility first** — All GCDS components are WCAG 2.1 AA. Keep custom Tailwind components accessible (aria roles, keyboard nav, focus management).
 2. **Bilingual** — Set `lang="en"` or `lang="fr"` on `<html>`. Use `lang-href` on header for language toggle.
-3. **GC branding** — Never modify the GC signature or wordmark. Always use `<gcds-header>` and `<gcds-footer>`.
+3. **GC branding** — Never modify the GC signature or wordmark. Always use `<gcds-header>` and `<gcds-footer>` (or `GcdsHeader`/`GcdsFooter` in React).
 4. **Tailwind prefix** — Always use `tw-` prefix on Tailwind classes to avoid conflicts with GCDS CSS shortcuts.
 5. **Responsive** — Use `<gcds-grid>` with `columns`, `columns-tablet`, `columns-desktop` for responsive layouts. GCDS CSS shortcuts support `xs:`, `sm:`, `md:`, `lg:`, `xl:` breakpoint prefixes.
 
