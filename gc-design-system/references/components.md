@@ -2,10 +2,31 @@
 
 Web Components (custom elements) from the GC Design System. Use `gcds-` prefix for all tags.
 
+- **Current web component package**: `@gcds-core/components` (v1.2.0)
+- **Current React wrapper package**: `@gcds-core/components-react` (v1.2.0)
 - **Legacy package**: `@cdssnc/gcds-components` (v0.47.0)
-- **New package**: `@gcds-core/components` (v1.0.0)
 
-Both expose the same component tags.
+All packages expose the same underlying components.
+
+## Setup by project type
+
+### Non-React (HTML/Web Components)
+
+```html
+<link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@1.2.0/dist/gcds/gcds.css" />
+<script type="module" src="https://cdn.design-system.canada.ca/@gcds-core/components@1.2.0/dist/gcds/gcds.esm.js"></script>
+```
+
+### React
+
+```bash
+npm install @gcds-core/components @gcds-core/components-react
+```
+
+```tsx
+import '@gcds-core/components-react/gcds.css';
+import { GcdsButton, GcdsContainer } from '@gcds-core/components-react';
+```
 
 ## Table of Contents
 
